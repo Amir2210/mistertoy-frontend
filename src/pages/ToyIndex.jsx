@@ -1,8 +1,9 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { toyService } from '../services/toy.service.js'
+import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { ToyList } from '../cmps/ToyList.jsx'
-import { loadToys } from '../store/actions/toy.actions.js'
+import { loadToys, removeToyOptimistic } from '../store/actions/toy.actions.js'
 export function ToyIndex() {
 
   const dispatch = useDispatch()
@@ -17,12 +18,24 @@ export function ToyIndex() {
         })
 }, [filterBy])
 
+function onRemoveToy(toyId) {
+  removeToyOptimistic(toyId)
+      .then(() => {
+          showSuccessMsg('Toy removed')
+      })
+      .catch(err => {
+          console.log('Cannot remove toy', err)
+          showErrorMsg('Cannot remove toy')
+      })
+}
+
   return (
     <div>
       <h3>Toys App</h3>
       <main>
       {!isLoading && <ToyList
                     toys={toys}
+                    onRemoveToy={onRemoveToy}
                 />}
                 {isLoading && <div>Loading...</div>}
       </main>
