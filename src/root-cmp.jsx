@@ -5,9 +5,9 @@ import './assets/style/main.css'
 import { AppHeader } from './cmps/AppHeader'
 // import { AppFooter } from './cmps/AppFooter'
 
-// import { HomePage } from './pages/HomePage'
-// import { AboutUs } from './pages/AboutUs'
-// import { CarIndex } from './pages/CarIndex.jsx'
+import { HomePage } from './pages/HomePage'
+import { AboutUs } from './pages/AboutUs'
+import { ToyIndex } from './pages/ToyIndex.jsx'
 // import { store } from './store/store'
 // import { CarDetails } from './pages/CarDetails.jsx'
 
@@ -19,16 +19,16 @@ export function App() {
         <AppHeader />
         <main>
           <Routes>
-            {/* <Route element={<HomePage />} path='/' />
-              <Route element={<AboutUs />} path='/about' /> */}
+            <Route element={<HomePage />} path='/' />
+            <Route element={<AboutUs />} path='/about' />
+            <Route element={<ToyIndex />} path='/toy' />
             {/* <Route element={<CarDetails />} path='/car/:carId' /> */}
-            {/* <Route element={<CarIndex />} path='/car' /> */}
           </Routes>
         </main>
         {/* <AppFooter /> */}
       </section>
     </Router>
-    //</Provider>
+    // </Provider>
   )
 }
 
