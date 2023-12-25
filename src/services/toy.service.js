@@ -19,7 +19,8 @@ export const toyService = {
   save,
   remove,
   getEmptyToy,
-  getDefaultFilter
+  getDefaultFilter,
+  getEmptyDefaultToy
 }
 
 _createToys()
@@ -53,6 +54,16 @@ function getEmptyToy(name = '', price = 1, labels = []) {
     name,
     price,
     labels,
+    createdAt: Date.now(),
+    inStock: true
+  }
+}
+
+function getEmptyDefaultToy(name){
+  return {
+    name,
+    price : utilService.getRandomIntInclusive(1,1000),
+    labels: [ 'Box game','Art','Baby',],
     createdAt: Date.now(),
     inStock: true
   }

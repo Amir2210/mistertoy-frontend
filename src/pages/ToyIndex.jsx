@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { toyService } from '../services/toy.service.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { ToyList } from '../cmps/ToyList.jsx'
-import { loadToys, removeToyOptimistic } from '../store/actions/toy.actions.js'
+import { loadToys, removeToyOptimistic, saveToy } from '../store/actions/toy.actions.js'
 export function ToyIndex() {
 
   const dispatch = useDispatch()
@@ -29,10 +29,26 @@ function onRemoveToy(toyId) {
       })
 }
 
+function onAddToy() {
+  const toyName = prompt('enter a toy name')
+  const toyToSave = toyService.getEmptyDefaultToy( toyName)
+  saveToy(toyToSave)
+      .then((savedToy) => {
+          console.log('savedToy:', savedToy)
+          showSuccessMsg(`Toy added (vendor: ${savedToy.vendor})`)
+          // dispatch({ type: ADD_CAR, toy: savedToy })
+      })
+      .catch(err => {
+          console.log('Cannot add toy', err)
+          showErrorMsg('Cannot add toy')
+      })
+}
+
   return (
     <div>
       <h3>Toys App</h3>
       <main>
+        <button onClick={onAddToy}>Add Toy 🧸</button>
       {!isLoading && <ToyList
                     toys={toys}
                     onRemoveToy={onRemoveToy}
