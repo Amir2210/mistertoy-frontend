@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-export function ToyPreview({toy, onRemoveToy}){
+export function ToyPreview({toy, onRemoveToy, onEditToy}){
   return (
     <li className="car-preview" key={toy._id}>
         <Link to={`/toy/${toy._id}`} >
@@ -12,9 +12,9 @@ export function ToyPreview({toy, onRemoveToy}){
                 onRemoveToy(toy._id)
             }}>x</button>
 
-            {/* <button onClick={() => {
-                onEdittoy(toy)
-            }}>Edit</button>  */}
+            <button onClick={() => {
+                onEditToy(toy)
+            }}>Edit</button> 
         </div>
         {/* <button className="buy" onClick={() => {
             addToCart(car)

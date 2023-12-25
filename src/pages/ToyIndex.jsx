@@ -44,6 +44,22 @@ function onAddToy() {
       })
 }
 
+function onEditToy(toy) {
+  const price = +prompt('New price?')
+  const toyToSave = { ...toy, price }
+
+  saveToy(toyToSave)
+      .then((savedToy) => {
+          // dispatch({ type: UPDATE_CAR, toy: savedToy })
+          showSuccessMsg(`Toy updated to price: $${savedToy.price}`)
+      })
+
+      .catch(err => {
+          console.log('Cannot update toy', err)
+          showErrorMsg('Cannot update toy')
+      })
+}
+
   return (
     <div>
       <h3>Toys App</h3>
@@ -52,6 +68,7 @@ function onAddToy() {
       {!isLoading && <ToyList
                     toys={toys}
                     onRemoveToy={onRemoveToy}
+                    onEditToy={onEditToy}
                 />}
                 {isLoading && <div>Loading...</div>}
       </main>
