@@ -41,6 +41,8 @@ function remove(toyId) {
 }
 
 function save(toy) {
+  console.log(toy);
+  console.log(toy._id);
   if (toy._id) {
     return storageService.put(TOY_KEY, toy)
   } else {
@@ -48,6 +50,10 @@ function save(toy) {
     return storageService.post(TOY_KEY, toy)
   }
 }
+
+
+
+
 
 function getEmptyToy(name = '', price = 1, labels = []) {
   return {
@@ -59,7 +65,7 @@ function getEmptyToy(name = '', price = 1, labels = []) {
   }
 }
 
-function getEmptyDefaultToy(name){
+function getEmptyDefaultToy(name='', price=''){
   return {
     name,
     price : utilService.getRandomIntInclusive(1,1000),
