@@ -8,12 +8,12 @@ import { AppHeader } from './cmps/AppHeader'
 import { HomePage } from './pages/HomePage'
 import { AboutUs } from './pages/AboutUs'
 import { ToyIndex } from './pages/ToyIndex.jsx'
-// import { store } from './store/store'
+import { store } from './store/store'
 // import { CarDetails } from './pages/CarDetails.jsx'
 
 export function App() {
   return (
-    // <Provider store={store}>
+    <Provider store={store}>
     <Router>
       <section className='main-layout app'>
         <AppHeader />
@@ -28,7 +28,7 @@ export function App() {
         {/* <AppFooter /> */}
       </section>
     </Router>
-    // </Provider>
+     </Provider>
   )
 }
 

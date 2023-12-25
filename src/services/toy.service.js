@@ -13,7 +13,14 @@ const labels = [
   'Battery Powered'
 ]
 
-export const toyService = {}
+export const toyService = {
+  query,
+  getById,
+  save,
+  remove,
+  getEmptyToy,
+  getDefaultFilter
+}
 
 _createToys()
 
@@ -59,11 +66,12 @@ function _createToys() {
       _createToy('Talking Doll', 123, ['Doll', 'Battery Powered', 'Baby'])
     )
     toys.push(_createToy('Monopol', 555, ['Box game']))
+    storageService.saveToStorage(TOY_KEY, toys)
   }
 }
 
 function getDefaultFilter() {
-  return 'all'
+  return { txt: '', maxPrice: '' }
 }
 
 function _createToy(name, price, label) {
