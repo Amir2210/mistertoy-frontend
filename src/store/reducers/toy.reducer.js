@@ -25,7 +25,7 @@ const initialState = {
     isCartShown: false,
     shoppingCart: [],
     isLoading: false,
-    filterBy: toyService.getDefaultFilter()
+    filterBy: toyService.getDefaultFilterBy()
 }
 
 export function toyReducer(state = initialState, action = {}) {

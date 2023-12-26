@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { toyService } from '../services/toy.service.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { ToyList } from '../cmps/ToyList.jsx'
-import { loadToys, removeToyOptimistic, saveToy, setFilterBy } from '../store/actions/toy.actions.js'
+import { loadToys, removeToyOptimistic, saveToy, setFilterBy} from '../store/actions/toy.actions.js'
 import { ToyFilter } from '../cmps/ToyFilter.jsx'
 import { ToySort } from '../cmps/ToySort.jsx'
 export function ToyIndex() {
@@ -12,10 +12,11 @@ export function ToyIndex() {
   const toys = useSelector((storeState) => storeState.toyModule.toys)
   const isLoading = useSelector((storeState) => storeState.toyModule.isLoading)
   const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
+  // const [filterBy, setFilterBy] = useState(toyService.getDefaultFilterBy())
   const [sort, setSort] = useState(toyService.getDefaultSort())
 
   useEffect(() => {
-    loadToys(filterBy, sort)
+    loadToys(sort)
         .catch(() => {
             showErrorMsg('Cannot show toys')
         })
