@@ -7,7 +7,7 @@ export function ToyPreview({toy, onRemoveToy, onEditToy}){
             <h4>{toy.name}</h4>
             <h1>🧸</h1>
         </Link>
-        <p>Price: <span>${toy.price.toLocaleString()}</span></p>
+        <p>Price: <span>${toy.maxPrice.toLocaleString()}</span></p>
         <div>
              <button onClick={() => {
                 onRemoveToy(toy._id)

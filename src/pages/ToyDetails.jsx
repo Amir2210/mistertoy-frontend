@@ -27,7 +27,7 @@ if (!toy) return <div>Loading...</div>
   return (
     <section className='toy-details'>
             <h1>Toy Name: {toy.name}</h1>
-            <h1>Toy Price: {toy.price}</h1>
+            <h1>Toy Price: {toy.maxPrice}</h1>
             <h2>Toy Labels: </h2>
             {toy.labels.map((label, index) =>{
                return <h4 key={index}>{label}</h4>

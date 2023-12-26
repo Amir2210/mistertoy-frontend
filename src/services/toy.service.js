@@ -1,6 +1,6 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
-
+import { httpService } from './http.service.js'
 const TOY_KEY = 'toyDB'
 const labels = [
   'On wheels',
@@ -20,17 +20,34 @@ export const toyService = {
   remove,
   getEmptyToy,
   getDefaultFilter,
-  getEmptyDefaultToy
+  getDefaultSort,
+  getEmptyDefaultToy,
+  getLabels
 }
 
 _createToys()
 
-function query(filterBy = 'all') {
-  if (!filterBy) filterBy = 'all'
-  return storageService.query(TOY_KEY).then((toys) => {
-    return toys
-  })
+function query(filterBy) {
+  return storageService.query(TOY_KEY)
+      .then(toys => {
+          if (filterBy.txt) {
+              const regExp = new RegExp(filterBy.txt, 'i')
+              toys = toys.filter(toy => regExp.test(toy.name))
+          }
+          if (filterBy.minPrice) {
+              toys = toys.filter(toy => toy.maxPrice >= filterBy.minPrice)
+          }
+          return toys
+      })
 }
+
+function getLabels() {
+  return [...labels]
+}
+
+// function query(filterBy = {}) {
+//   return httpService.get(BASE_URL, filterBy)
+// }
 
 function getById(toyId) {
   return storageService.get(TOY_KEY, toyId)
@@ -41,9 +58,7 @@ function remove(toyId) {
 }
 
 function save(toy) {
-  console.log(toy);
-  console.log(toy._id);
-  if (toy._id) {
+ if (toy._id) {
     return storageService.put(TOY_KEY, toy)
   } else {
     // toy.owner = userService.getLoggedinUser()
@@ -55,20 +70,20 @@ function save(toy) {
 
 
 
-function getEmptyToy(name = '', price = 1, labels = []) {
+function getEmptyToy(name = '',  maxPrice = 1, labels = []) {
   return {
     name,
-    price,
+    maxPrice,
     labels,
     createdAt: Date.now(),
     inStock: true
   }
 }
 
-function getEmptyDefaultToy(name='', price=''){
+function getEmptyDefaultToy(name='',){
   return {
     name,
-    price : utilService.getRandomIntInclusive(1,1000),
+    maxPrice : utilService.getRandomIntInclusive(1,1000),
     labels: [ 'Box game','Art','Baby',],
     createdAt: Date.now(),
     inStock: true
@@ -88,11 +103,18 @@ function _createToys() {
 }
 
 function getDefaultFilter() {
-  return { txt: '', maxPrice: '' }
+  return { txt: '',minPrice:'', maxPrice: '' }
 }
 
-function _createToy(name, price, label) {
-  const toy = getEmptyToy(name, price, label)
+function getDefaultSort() {
+  return {
+      by: 'name',
+      asc: true
+  }
+}
+
+function _createToy(name,  maxPrice, label) {
+  const toy = getEmptyToy(name,  maxPrice, label)
   toy._id = utilService.makeId()
   return toy
 }

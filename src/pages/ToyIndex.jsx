@@ -1,22 +1,25 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { toyService } from '../services/toy.service.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { ToyList } from '../cmps/ToyList.jsx'
-import { loadToys, removeToyOptimistic, saveToy } from '../store/actions/toy.actions.js'
+import { loadToys, removeToyOptimistic, saveToy, setFilterBy } from '../store/actions/toy.actions.js'
+import { ToyFilter } from '../cmps/ToyFilter.jsx'
+import { ToySort } from '../cmps/ToySort.jsx'
 export function ToyIndex() {
 
   const dispatch = useDispatch()
   const toys = useSelector((storeState) => storeState.toyModule.toys)
   const isLoading = useSelector((storeState) => storeState.toyModule.isLoading)
   const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
+  const [sort, setSort] = useState(toyService.getDefaultSort())
 
   useEffect(() => {
-    loadToys()
+    loadToys(filterBy, sort)
         .catch(() => {
             showErrorMsg('Cannot show toys')
         })
-}, [filterBy])
+}, [filterBy, sort])
 
 function onRemoveToy(toyId) {
   removeToyOptimistic(toyId)
@@ -60,9 +63,20 @@ function onEditToy(toy) {
       })
 }
 
+function onSetFilter(filterBy) {
+  // console.log('filterBy:', filterBy)
+  setFilterBy(filterBy)
+}
+
+function onSetSort(sort) {
+  setSort(sort)
+}
+
   return (
     <div>
       <h3>Toys App</h3>
+      <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter}/>
+      <ToySort sort={sort} onSetSort={onSetSort} />
       <main>
         <button onClick={onAddToy}>Add Toy 🧸</button>
       {!isLoading && <ToyList
