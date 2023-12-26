@@ -17,7 +17,7 @@ export function ToyIndex() {
   const [sort, setSort] = useState(toyService.getDefaultSort())
 
  function ButtonUsage() {
-    return <Button variant="contained">Hello world</Button>;
+    return <Button variant="contained">Hello world</Button>
   }
   useEffect(() => {
     loadToys(sort)

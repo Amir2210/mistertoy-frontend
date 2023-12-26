@@ -43,7 +43,7 @@ _createToys()
 
 function query(filterBy, sort) {
   //query params
-  console.log('sort', sort);
+  // console.log('sort', sort);
   return httpService.get('toy', { params: { filterBy, sort } })
 }
 
