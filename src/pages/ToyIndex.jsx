@@ -6,6 +6,7 @@ import { ToyList } from '../cmps/ToyList.jsx'
 import { loadToys, removeToyOptimistic, saveToy, setFilterBy} from '../store/actions/toy.actions.js'
 import { ToyFilter } from '../cmps/ToyFilter.jsx'
 import { ToySort } from '../cmps/ToySort.jsx'
+import Button from '@mui/material/Button';
 export function ToyIndex() {
 
   const dispatch = useDispatch()
@@ -15,6 +16,9 @@ export function ToyIndex() {
   // const [filterBy, setFilterBy] = useState(toyService.getDefaultFilterBy())
   const [sort, setSort] = useState(toyService.getDefaultSort())
 
+ function ButtonUsage() {
+    return <Button variant="contained">Hello world</Button>;
+  }
   useEffect(() => {
     loadToys(sort)
         .catch(() => {
@@ -75,6 +79,7 @@ function onSetSort(sort) {
 
   return (
     <div>
+      <ButtonUsage />
       <h3>Toys App</h3>
       <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter}/>
       <ToySort sort={sort} onSetSort={onSetSort} />

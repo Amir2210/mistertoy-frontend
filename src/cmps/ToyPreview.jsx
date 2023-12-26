@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 export function ToyPreview({toy, onRemoveToy, onEditToy}){
-  console.log('toy:', toy)
+//   console.log('toy:', toy)
   return (
     <li className="car-preview" key={toy._id}>
         <Link to={`/toy/${toy._id}`} >
