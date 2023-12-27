@@ -1,0 +1,16 @@
+.toy-preview {
+    text-align: center;
+    padding: 1.3em;
+    display: flex;
+    flex-direction: column;
+
+    h4{
+        text-transform: capitalize;
+        color: $card-title-clr;
+        font-family: 'Edu VIC WA NT Beginner', cursive;
+    }
+    img{
+        max-width: 100px;
+    }
+}
+

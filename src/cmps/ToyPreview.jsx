@@ -3,10 +3,10 @@ import { toyService } from '../services/toy.service.js'
 export function ToyPreview({toy, onRemoveToy, onEditToy}){
 //   console.log('toy:', toy)
   return (
-    <li className="car-preview" key={toy._id}>
+    <li className="toy-preview" key={toy._id}>
         <Link to={`/toy/${toy._id}`} >
             <h4>{toy.name}</h4>
-            <h1>🤖</h1>
+            <h1>{toy.photo}</h1>
         </Link>
         <p>Price: <span>${toy.price.toLocaleString()}</span></p>
         <div>

@@ -132,6 +132,7 @@ function getEmptyToy(name = '',  maxPrice = 1, labels = []) {
     name,
     maxPrice,
     labels,
+    photo: '🐱‍🚀',
     createdAt: Date.now(),
     inStock: true
   }
@@ -141,6 +142,7 @@ function getEmptyDefaultToy(name='',){
   return {
     name,
     price : utilService.getRandomIntInclusive(1,1000),
+    photo : getRandomDoll(),
     labels: [ 'Box game','Art','Baby',],
     createdAt: Date.now(),
     inStock: true

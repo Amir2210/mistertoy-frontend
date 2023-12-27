@@ -1,0 +1,29 @@
+.toy-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+
+    li{
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin: 1em;  
+        padding: 3em;   
+        border-radius: 10px;
+        transition: scale 0.5s;
+        &:nth-child(1n + 0){
+            background-color: $card-gren-bg-clr; 
+            outline: 2px solid $black;
+        }
+        &:nth-child(2n + 0){
+            background-color: $card-yellow-bg-clr;
+        }
+        &:nth-child(3n + 0){
+            background-color: $card-pink-bg-clr;
+        }
+        &:hover{
+            scale: 1.1;
+        }
+    }
+}

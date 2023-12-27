@@ -1,0 +1,21 @@
+.toy-filter {
+    background-color: $filter-bg-clr;
+    padding: 1em;
+    text-align: center;
+    h2{
+        font-size: 2.2em;
+        color: $main-clr;
+    }
+    input{
+        margin: 0 10px;
+        font-size: 1.6em;
+        padding: 4px;
+        border: 2px solid hsla(0, 0%, 80%, 0.5);
+        border-radius: 5px;
+        color: hsla(0, 0%, 0%, 0.5);
+    }
+    label{
+        margin: 0 10px;
+        font-family: 'Edu VIC WA NT Beginner', cursive;
+    }
+}

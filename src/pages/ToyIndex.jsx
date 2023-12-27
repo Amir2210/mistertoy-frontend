@@ -81,7 +81,7 @@ function onSetSort(sort) {
   return (
     <div>
       {/* <ButtonUsage /> */}
-      <h3>Toys App</h3>
+      
       <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter}/>
       <ToySort sort={sort} onSetSort={onSetSort} />
       <main>

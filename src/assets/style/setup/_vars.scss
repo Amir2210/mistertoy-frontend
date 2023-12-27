@@ -4,7 +4,7 @@
   // --clr1bg: #c3eddf;
   // --clr1bg: #fff;
   --clr1bg-light: #c1f1e1;
-  --clr2bg: #3887BE;
+  // --clr2bg: #F2F1EB;
   --clr2bg-light: #e9d8a6;
 
   --gray1: rgb(240, 240, 240);
@@ -13,9 +13,14 @@
 
 } 
 //COLORS
-$clr1: #52D3D8;
+$main-clr: #52D3D8;
+$filter-bg-clr:#f7f7f7;
+$card-gren-bg-clr:#45FFCA;
+$card-yellow-bg-clr:#FEFFAC;
+$card-pink-bg-clr:#FFB6D9;
+$card-title-clr:#0F0F0F;
 $white: #fff;
-
+$black:#000;
 
 // LAYOUT
 $layoutPadding: 20px;

@@ -22,7 +22,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
     }
 
     return (
-        <section className="car-filter full main-layout">
+        <section className="toy-filter main-layout">
             <h2>Toys Filter</h2>
             <form >
                 <label htmlFor="name">Name:</label>
@@ -43,8 +43,8 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                     onChange={handleChange}
                 />
 
-<label className='filter-label'>
-                <span className='filter-label'>Filter By</span>
+<label className='filter-label'>Filter By</label>
+                
                 <select
                     onChange={handleChange}
                     name="labels"
@@ -55,10 +55,9 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                         {toyLabel.map(label => <option key={label} value={label}>{label}</option>)}
                     </>
                 </select>
-            </label>
+            
 
-            <label className='filter-label'>
-                <span className='filter-label'>In stock</span>
+            <label className='filter-label'>In stock</label>  
                 <select
                     onChange={handleChange}
                     name="inStock"
@@ -67,7 +66,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                     <option value={true}>In stock</option>
                     <option value={false}>Out of stock</option>
                 </select>
-            </label>
+            
             </form>
 
         </section>
