@@ -1,0 +1,15 @@
+.app-header {
+  background-color: $clr1 ;
+  color: $white;
+  padding: 1em;
+  h1{
+    font-size: 3em;
+    letter-spacing: 3px;
+  }
+  .app-nav {
+      display: flex;
+      gap: 25px;
+      font-size: 1.5em;
+      font-family: 'Edu VIC WA NT Beginner', cursive;
+  }
+}

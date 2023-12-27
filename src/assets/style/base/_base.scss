@@ -2,12 +2,12 @@
   box-sizing: border-box;
 }
 
-html {
-}
+
 
 body {
   margin: 0;
-  color: var(--gray3);
+  // color: var(--gray3);
+  background-color: #fdfdfd;
 }
 
 h1,
@@ -17,7 +17,7 @@ h4,
 h5,
 h6 {
   margin: .5em 0 .5em;
-  font-family: 'Edu VIC WA NT Beginner', cursive;
+  font-family: 'Rubik Doodle Shadow', cursive;
 }
 
 p {

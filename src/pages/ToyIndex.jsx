@@ -38,7 +38,8 @@ function onRemoveToy(toyId) {
 }
 
 function onAddToy() {
-  const toyName = prompt('enter a toy name')
+  let toyName = prompt('enter a toy name')
+  if(toyName === '') toyName = toyService.getRandomDollName()
   const toyToSave = toyService.getEmptyDefaultToy( toyName)
   saveToy(toyToSave)
       .then((savedToy) => {
@@ -79,12 +80,12 @@ function onSetSort(sort) {
 
   return (
     <div>
-      <ButtonUsage />
+      {/* <ButtonUsage /> */}
       <h3>Toys App</h3>
       <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter}/>
       <ToySort sort={sort} onSetSort={onSetSort} />
       <main>
-        <button onClick={onAddToy}>Add Toy 🧸</button>
+        <button onClick={onAddToy}>Add Toy 👽</button>
       {!isLoading && <ToyList
                     toys={toys}
                     onRemoveToy={onRemoveToy}

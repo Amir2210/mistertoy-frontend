@@ -22,7 +22,42 @@ export const toyService = {
   getDefaultFilterBy,
   getDefaultSort,
   getEmptyDefaultToy,
-  getLabels
+  getLabels,
+  getRandomDoll,
+  getRandomDollName
+}
+
+const dolls = ['🐬', '🤖', '🛴', '🚗', '🌟', '🌈', '🍎', '🚀', '🎉', '🎸', '🍕', '🎲', '🌺', '🍔', '🍦', '📚', '🏆', '🎨', '🍇', '🎈', '🍟', '🍭', '🎧', '🏖️', '🍓', '🏀', '🌍', '🌻', '🌮', '🍩','🚲', '🎮', '🎸', '⌛', '💻', '🎭', '📷', '🏹', '🌈', '🚁']
+
+function getRandomDoll(){
+  const randomIdx = utilService.getRandomIntInclusive(0,39)
+  return dolls[randomIdx]
+}
+
+const dollsNames = [ 'Super Space Explorer',
+'Dino Adventure Set',
+'Magic Castle Playhouse',
+'Robot Buddy',
+'Enchanted Princess Doll',
+'Pirate Treasure Map Kit',
+'Galactic Laser Blaster',
+'Racing Turbo Car',
+'Teddy Bear Picnic Basket',
+'Spy Detective Kit',
+'Jungle Safari Explorer Kit',
+'Mermaid Tail Dress-up',
+'Construction Crew Builder Set',
+'Musical Rainbow Keyboard',
+'Astronaut Space Helmet',
+'Unicorn Fantasy Puzzle',
+'Police Rescue Patrol Bike',
+'My Talking Pet Parrot',
+'Chef\'s Kitchen Cooking Set',
+'DIY Friendship Bracelet Kit',]
+
+function getRandomDollName(){
+  const randomIdx = utilService.getRandomIntInclusive(0,20)
+  return dollsNames[randomIdx]
 }
 
 _createToys()

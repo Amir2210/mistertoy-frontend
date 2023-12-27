@@ -7,6 +7,7 @@
 .car-preview h4{
     text-transform: capitalize;
     color: black;
+    font-family: 'Edu VIC WA NT Beginner', cursive;
 }
 
 .car-preview img {
