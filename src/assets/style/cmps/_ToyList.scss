@@ -2,7 +2,7 @@
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-
+    
     li{
         cursor: pointer;
         display: flex;
@@ -24,6 +24,11 @@
         }
         &:hover{
             scale: 1.1;
+        }
+    }
+    button{
+        &:hover{
+            background-color: $card-btn-hover-bg-clr;
         }
     }
 }

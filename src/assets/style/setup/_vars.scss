@@ -1,5 +1,5 @@
 :root {
-  --clr2: #ae2012;
+  // --clr2: hsla(0, 0%, 37%, 0.308);
 
   // --clr1bg: #c3eddf;
   // --clr1bg: #fff;
@@ -14,11 +14,14 @@
 } 
 //COLORS
 $main-clr: #52D3D8;
-$filter-bg-clr:#f7f7f7;
+$lightGray-bg-clr:#f7f7f7;
 $card-gren-bg-clr:#45FFCA;
 $card-yellow-bg-clr:#FEFFAC;
 $card-pink-bg-clr:#FFB6D9;
 $card-title-clr:#0F0F0F;
+$card-btn-hover-bg-clr: hsla(0, 0%, 37%, 0.308);
+$sort-btn-bg-clr:hsla(0, 0%, 91%, 0.5);
+$sort-btn-bg-clr-hover:hsla(0, 0%, 38%, 0.185);
 $white: #fff;
 $black:#000;
 

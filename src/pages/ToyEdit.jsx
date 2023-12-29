@@ -16,14 +16,15 @@ export function ToyEdit() {
         }
     }, [])
 
-    function loadToy() {
-        toyService.getById(toyId)
-            .then((toy) => {
-                console.log('Loaded Toy:', toy);
-                setToyToEdit(toy);
-   
-            })
-            .catch(err => console.log('Error loading toy:', err));
+   async function loadToy() {
+
+    try {
+       const toy =  await  toyService.getById(toyId)
+       setToyToEdit(toy);
+       console.log('Loaded Toy:', toy)
+    } catch (error) {
+        console.log('Error loading toy:', error);
+    }
     }
 
     function handleChange({ target }) {
@@ -47,25 +48,28 @@ export function ToyEdit() {
         setToyToEdit(prevToy => ({ ...prevToy, [field]: value }))
     }
 
-    function onSaveToy(ev) {
+   async function onSaveToy(ev) {
         ev.preventDefault()
-        saveToy(toyToEdit)
-            .then(() => navigate('/toy'))
-            .catch(err => console.log('err:', err))
+        try {
+            await saveToy(toyToEdit)
+            navigate('/toy')
+        } catch (error) {
+            console.log('error:', error)
+        }
     }
     const { name, price } = toyToEdit
-    return (
-        <section className="toy-edit">
-            <h1>Edit Toy</h1>
-            <form onSubmit={onSaveToy}>
-                <label htmlFor="name">Name</label>
-                <input onChange={handleChange} value={name} type="text" name="name" id="name"/>
-
-                <label htmlFor="price">Price</label>
-                <input onChange={handleChange} value={price} type="number" name="price" id="price" />
-                <button disabled={!name}>Save</button>
-            </form>
-
-        </section>
-    )
+        return (
+            <section className="toy-edit">
+                <h1>Edit Toy</h1>
+                <form onSubmit={onSaveToy}>
+                    <label htmlFor="name">Name</label>
+                    <input onChange={handleChange} value={name} type="text" name="name" id="name"/>
+    
+                    <label htmlFor="price">Price</label>
+                    <input onChange={handleChange} value={price} type="number" name="price" id="price" />
+                    <button disabled={!name}>Save</button>
+                </form>
+    
+            </section>
+        )
 }

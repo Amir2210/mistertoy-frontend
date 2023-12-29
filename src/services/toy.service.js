@@ -60,8 +60,14 @@ function getRandomDollName(){
   return dollsNames[randomIdx]
 }
 
+function getLabels() {
+  return [...labels]
+}
+
+
 _createToys()
 
+// 1 VERSION WITH storageService
 // function query(filterBy) {
 //   return storageService.query(TOY_KEY)
 //       .then(toys => {
@@ -76,35 +82,43 @@ _createToys()
 //       })
 // }
 
+// 2 VERSION 
 function query(filterBy, sort) {
   //query params
   // console.log('sort', sort);
   return httpService.get('toy', { params: { filterBy, sort } })
 }
 
-function getLabels() {
-  return [...labels]
-}
 
 
+// 1 VERSION WITH storageService
 // function getById(toyId) {
 //   return storageService.get(TOY_KEY, toyId)
 // }
 
+// 2 VERSION 
 function getById(toyId) {
   // params
   return httpService.get(`toy/${toyId}`)
 }
 
+
+
+
+
+// 1 VERSION WITH storageService
 // function remove(toyId) {
 //   return storageService.remove(TOY_KEY, toyId)
 // }
 
+// 2 VERSION 
 function remove(toyId) {
   return httpService.delete(`toy/${toyId}`)
 }
 
 
+
+// 1 VERSION WITH storageService
 // function save(toy) {
 //  if (toy._id) {
 //     return storageService.put(TOY_KEY, toy)
@@ -114,6 +128,8 @@ function remove(toyId) {
 //   }
 // }
 
+
+// 2 VERSION 
 function save(toy) {
   if (toy._id) {
     // second parameter is the body of the url
@@ -127,10 +143,11 @@ function save(toy) {
 
 
 
-function getEmptyToy(name = '',  maxPrice = 1, labels = []) {
+
+function getEmptyToy(name = '',  price = 1, labels = []) {
   return {
     name,
-    maxPrice,
+    price,
     labels,
     photo: '🐱‍🚀',
     createdAt: Date.now(),
@@ -181,8 +198,8 @@ function getDefaultSort() {
   }
 }
 
-function _createToy(name,  maxPrice, label) {
-  const toy = getEmptyToy(name,  maxPrice, label)
+function _createToy(name,  price, label) {
+  const toy = getEmptyToy(name,  price, label)
   toy._id = utilService.makeId()
   return toy
 }
