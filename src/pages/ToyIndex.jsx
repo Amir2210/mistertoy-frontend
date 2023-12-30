@@ -19,9 +19,9 @@ export function ToyIndex() {
  function ButtonUsage() {
     return <Button variant="contained">Hello world</Button>
   } 
-  
+
   useEffect(() => {
-    loadToys(sort)
+    loadToys(filterBy, sort)
         .catch(() => {
             showErrorMsg('Cannot show toys')
         })

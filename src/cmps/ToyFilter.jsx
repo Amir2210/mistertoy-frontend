@@ -3,6 +3,7 @@ import { utilService } from "../services/util.service.js"
 import { useEffectUpdate } from "./customHooks/useEffectUpdate.js"
 import { toyService } from '../services/toy.service.js'
 
+
 const toyLabel = toyService.getLabels()
 export function ToyFilter({ filterBy, onSetFilter }) {
     
@@ -44,7 +45,6 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                 />
 
 <label className='filter-label'>Filter By</label>
-                
                 <select
                     onChange={handleChange}
                     name="labels"
