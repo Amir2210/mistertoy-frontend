@@ -15,6 +15,7 @@ export function ToyIndex() {
   const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
   // const [filterBy, setFilterBy] = useState(toyService.getDefaultFilterBy())
   const [sort, setSort] = useState(toyService.getDefaultSort())
+  const user = useSelector((storeState) => storeState.userModule.loggedinUser)
 
  function ButtonUsage() {
     return <Button variant="contained">Hello world</Button>
@@ -81,11 +82,14 @@ function onSetSort(sort) {
       <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter}/>
       <ToySort sort={sort} onSetSort={onSetSort} />
       <main>
+      {user && user.isAdmin && (      
         <button onClick={onAddToy}>Add Toy 👽</button>
+      )}
       {!isLoading && <ToyList
                     toys={toys}
                     onRemoveToy={onRemoveToy}
                     onEditToy={onEditToy}
+                    user={user}
                 />}
                 {isLoading && <div>Loading...</div>}
       </main>

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { toyService } from '../services/toy.service.js'
-export function ToyPreview({toy, onRemoveToy, onEditToy}){
+export function ToyPreview({toy, onRemoveToy, onEditToy, user}){
 //   console.log('toy:', toy)
   return (
     <li className="toy-preview" key={toy._id}>
@@ -10,11 +10,15 @@ export function ToyPreview({toy, onRemoveToy, onEditToy}){
         </Link>
         <p>Price: <span>${toy.price.toLocaleString()}</span></p>
         <div>
+        {user && user.isAdmin && (
+            <>
              <button onClick={() => {
                 onRemoveToy(toy._id)
-            }}>x</button>
-            
+            }}>x</button>           
 <button><Link to={`/toy/edit/${toy._id}?`}>Edit</Link></button>
+            </>
+        )}
+
 <button><Link to={`/toy/${toy._id}?`}>Details</Link></button>
         </div>
         {/* <button className="buy" onClick={() => {
