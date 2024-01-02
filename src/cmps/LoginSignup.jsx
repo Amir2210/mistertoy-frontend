@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import {showErrorMsg, showSuccessMsg} from '../services/event-bus.service.js'
 import {login, signup} from '../store/actions/user.actions.js'
+import { ImgUploader } from './ImgUploader.jsx'
 
 function getEmptyCredentials() {
   return {
@@ -41,6 +42,10 @@ export function LoginSignup() {
     setIsSignupState((isSignupState) => !isSignupState)
   }
 
+  function onUploaded(imgUrl) {
+    setCredentials({ ...credentials, imgUrl })
+}
+
   const {username, password, fullname} = credentials
 
   return (
@@ -78,11 +83,11 @@ export function LoginSignup() {
 
         <button>{isSignupState ? 'Signup' : 'Login'}</button>
       </form>
-
       <div className="btns">
         <a href="#" onClick={onToggleSignupState}>
           {isSignupState ? 'Already a member? Login' : 'New user? Signup here'}
         </a>
+      {/* <ImgUploader onUploaded={onUploaded} />    */}
       </div>
     </div>
   )

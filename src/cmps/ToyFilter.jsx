@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import { utilService } from "../services/util.service.js"
 import { useEffectUpdate } from "./customHooks/useEffectUpdate.js"
 import { toyService } from '../services/toy.service.js'
+import MultiSelect from './MultiSelect.jsx'
 
 
 const toyLabel = toyService.getLabels()
@@ -45,7 +46,8 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                 />
 
 <label className='filter-label'>Filter By</label>
-                <select
+<MultiSelect />
+                {/* <select
                     onChange={handleChange}
                     name="labels"
                     multiple
@@ -54,7 +56,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                     <>
                         {toyLabel.map(label => <option key={label} value={label}>{label}</option>)}
                     </>
-                </select>
+                </select> */}
             
 
             <label className='filter-label'>In stock</label>  

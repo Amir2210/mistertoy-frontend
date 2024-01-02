@@ -160,7 +160,7 @@ function getEmptyDefaultToy(name='',){
   return {
     name,
     price : utilService.getRandomIntInclusive(1,1000),
-    photo : getRandomDoll(),
+    photo: 'https://res.cloudinary.com/dxm0sqcfp/image/upload/v1704134967/w2oux0x3q0knil68y5u6.png',
     labels: [ 'Box game','Art','Baby',],
     createdAt: Date.now(),
     inStock: true
