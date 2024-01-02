@@ -21,7 +21,7 @@ export function ToyEdit() {
     try {
        const toy =  await  toyService.getById(toyId)
        setToyToEdit(toy);
-       console.log('Loaded Toy:', toy)
+    //    console.log('Loaded Toy:', toy)
     } catch (error) {
         console.log('Error loading toy:', error);
     }
